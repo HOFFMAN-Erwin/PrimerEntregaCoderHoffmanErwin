@@ -1,30 +1,17 @@
-import CardWidget from "../CardWidget/CardWidget"
-
-
-function NavBar({cartCount, title}) {
+import CartWidget from '../CardWidget/CardWidget';
+import { Link } from "react-dom";
+function NavBar() {
   return (
-<nav className="navbar navbar-expand-lg bg-body-tertiary">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#">{title}</a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
-        </li>
-      </ul>
-      <form className="d-flex" role="search">
-        <CardWidget cartCount={cartCount}/>
-      </form>
-    </div>
-  </div>
-</nav>
-  )
+    <nav style={{display: "flex", justifyContent:"space-between", alignItems: 'center' }}>
+      <h1>Ecomerce</h1>
+      <section>
+        <Link to="/category/celular"> Celulares </Link>
+        <Link to="/category/tablet"> Tablets </Link>
+        <Link to="/category/computer"> Computers </Link>
+      </section>
+      <CartWidget />
+    </nav>
+  );
 }
 
 export default NavBar

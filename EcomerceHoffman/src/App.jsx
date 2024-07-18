@@ -1,23 +1,21 @@
-import { useState } from "react"
-
-import NavBar from "./Components/NavBar/NavBar"
-import ItemListContainer from "./Components/ItemListContainer/ItemListContainer"
-
-
+//import './App.css'
+import { ItemDetailContainer } from './Components/ItemDetailContainer/ItemDetailContainer'
+import ItemListContainer from './Components/ItemListContainer/ItemListContainer'
+import NavBar from './Components/NavBar/NavBar'
+import {BrowserRouter, Routes, Route} from 'react-dom'
 function App() {
-  const [cartCount, setCartCount] = useState(5)
 
-  const handleCount = () => {
-    setCartCount( x => x+1)
-  }
+
   return (
-    <>
-      <NavBar cartCount={cartCount} title="Memazon"/>
-      <button className="btn btn-primary" onClick={handleCount}>Click</button>
-      <ItemListContainer greetings="Bienvenidos a tu ecomerce de confianza" />
-{/*       <h1>dd</h1> */}
-    </>
-  )
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<ItemListContainer greetings={"Lista de Productos"} />} />
+        <Route path='/category/:category' element={<ItemListContainer />} />
+        <Route path='/detail/:id' element={<ItemDetailContainer />} />   
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App
